@@ -8,6 +8,8 @@ flask = "*"
 flask-restful = "*"
 flask-sqlalchemy = "*"
 flask-migrate = "*"
+pylint = "*"
+flask-swagger-ui = "*"
 
 [dev-packages]
 

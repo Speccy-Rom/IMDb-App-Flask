@@ -30,9 +30,34 @@ class Film(db.Model):
         return {
             'title': self.title,
             'uuid': self.uuid,
-            'release_date': self.release_date,
+            'release_date': self.release_date.strftime('%Y-%m-%d'),
             'description': self.description,
             'distributed_by': self.distributed_by,
             'length': self.length,
             'rating': self.rating
+        }
+
+
+class Actor(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    first_name = db.Column(db.String(120), nullable=False)
+    last_name = db.Column(db.String(120), nullable=False)
+    uuid = db.Column(db.String(36), unique=True)
+    description = db.Column(db.Text)
+
+    def __init__(self, first_name, last_name, description):
+        self.first_name = first_name
+        self.last_name = last_name
+        self.description = description
+
+    def __repr__(self):
+        return f'Actor({self.first_name}, {self.last_name}, {self.uuid})'
+
+    def to_dict(self):
+        return {
+            "first_name": self.first_name,
+            "last_name": self.last_name,
+            'uuid': self.uuid,
+            'description': self.description
+
         }
