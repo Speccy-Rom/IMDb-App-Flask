@@ -39,25 +39,17 @@ class Film(db.Model):
 
 
 class Actor(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    first_name = db.Column(db.String(120), nullable=False)
-    last_name = db.Column(db.String(120), nullable=False)
-    uuid = db.Column(db.String(36), unique=True)
-    description = db.Column(db.Text)
+    __tablename__ = 'actors'
 
-    def __init__(self, first_name, last_name, description):
-        self.first_name = first_name
-        self.last_name = last_name
-        self.description = description
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(50), unique=True, nullable=False)
+    birthday = db.Column(db.Date)
+    is_active = db.Column(db.Boolean, default=False)
+
+    # def __init__(self, first_name, last_name, description):
+    #     self.first_name = first_name
+    #     self.last_name = last_name
+    #     self.description = description
 
     def __repr__(self):
-        return f'Actor({self.first_name}, {self.last_name}, {self.uuid})'
-
-    def to_dict(self):
-        return {
-            "first_name": self.first_name,
-            "last_name": self.last_name,
-            'uuid': self.uuid,
-            'description': self.description
-
-        }
+        return f'Actor({self.name}, {self.birthday})'

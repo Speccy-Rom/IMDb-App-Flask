@@ -22,4 +22,5 @@ SWAGGERUI_BLUEPRINT = get_swaggerui_blueprint(
     }
 )
 app.register_blueprint(SWAGGERUI_BLUEPRINT, url_prefix=SWAGGER_URL)  # привязыв. наш URL '/swagger' к нашему приложению
-from . import routes, models
+from . import routes
+from .database import models

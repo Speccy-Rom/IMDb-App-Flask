@@ -10,6 +10,7 @@ flask-sqlalchemy = "*"
 flask-migrate = "*"
 pylint = "*"
 flask-swagger-ui = "*"
+marshmallow-sqlalchemy = "*"
 
 [dev-packages]
 
