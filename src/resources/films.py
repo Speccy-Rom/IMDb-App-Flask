@@ -1,6 +1,8 @@
 from flask import request
 from flask_restful import Resource
 from marshmallow import ValidationError
+from sqlalchemy.orm import joinedload, selectinload
+
 
 from src import db
 from src.database.models import Film
@@ -12,7 +14,8 @@ class FilmListApi(Resource):
 
     def get(self, uuid=None):
         if not uuid:
-            films = db.session.query(Film).all()
+            films = db.session.query(Film).options(
+                joinedload(Film.actors))
             return self.film_schema.dump(films, many=True), 200
         film = db.session.query(Film).filter_by(uuid=uuid).first()
         if not film:
