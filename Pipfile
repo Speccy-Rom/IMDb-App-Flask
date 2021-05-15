@@ -11,6 +11,7 @@ flask-migrate = "*"
 pylint = "*"
 flask-swagger-ui = "*"
 marshmallow-sqlalchemy = "*"
+pyjwt = "*"
 
 [dev-packages]
 

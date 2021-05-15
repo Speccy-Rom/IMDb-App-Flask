@@ -18,10 +18,10 @@ SWAGGERUI_BLUEPRINT = get_swaggerui_blueprint(
     SWAGGER_URL,
     API_URL,
     config={
-        'app_name': 'IMDb приложение'
+        'app_name': 'Flask tutorial'
     }
 )
-app.register_blueprint(SWAGGERUI_BLUEPRINT, url_prefix=SWAGGER_URL)  # привязыв. наш URL '/swagger' к нашему приложению
+app.register_blueprint(SWAGGERUI_BLUEPRINT, url_prefix=SWAGGER_URL)
 
 app.debug = True
 
@@ -41,5 +41,5 @@ def sql_debug(response):
 
 app.after_request(sql_debug)
 
-from . import routes
-from .database import models
+from src import routes
+from src.database import models
