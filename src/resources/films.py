@@ -7,6 +7,7 @@ from sqlalchemy.orm import joinedload, selectinload
 from src import db
 from src.database.models import Film
 from src.schemas.films import FilmSchema
+from src.services.film_services import FilmServices
 
 
 class FilmListApi(Resource):
@@ -14,10 +15,10 @@ class FilmListApi(Resource):
 
     def get(self, uuid=None):
         if not uuid:
-            films = db.session.query(Film).options(
-                joinedload(Film.actors))
+            films = FilmServices.fetch_all_films(db.session).options(
+                selectinload(Film.actors))
             return self.film_schema.dump(films, many=True), 200
-        film = db.session.query(Film).filter_by(uuid=uuid).first()
+        film = FilmServices.fetch_all_by_uuid(db.session, uuid)
         if not film:
             return "", 404
         return self.film_schema.dump(film), 200
@@ -32,7 +33,7 @@ class FilmListApi(Resource):
         return self.film_schema.dump(film), 201
 
     def put(self, uuid):
-        film = db.session.query(Film).filter_by(uuid=uuid).first()
+        film = FilmServices.fetch_all_by_uuid(db.session, uuid)
         if not film:
             return "", 404
         try:
@@ -47,7 +48,7 @@ class FilmListApi(Resource):
         pass
 
     def delete(self, uuid):
-        film = db.session.query(Film).filter_by(uuid=uuid).first()
+        film = FilmServices.fetch_all_by_uuid(db.session, uuid)
         if not film:
             return "", 404
         db.session.delete(film)

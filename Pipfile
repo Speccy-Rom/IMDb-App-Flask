@@ -4,7 +4,6 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-flask = "*"
 flask-restful = "*"
 flask-sqlalchemy = "*"
 flask-migrate = "*"
@@ -12,8 +11,11 @@ pylint = "*"
 flask-swagger-ui = "*"
 marshmallow-sqlalchemy = "*"
 pyjwt = "*"
+flask = "==1.1.4"
 
 [dev-packages]
+pytest = "*"
+coverage = "*"
 
 [requires]
 python_version = "3.9"
