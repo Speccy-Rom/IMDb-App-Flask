@@ -25,7 +25,7 @@ class TestFilms:
 
         assert resp.status_code == http.HTTPStatus.OK
 
-    @patch('src.services.film_service.FilmService.fetch_all_films')
+    @patch('src.services.film_services.FilmService.fetch_all_films')
     def test_get_films_mock_db(self, mock_db_call):
         client = app.test_client()
         resp = client.get('/films')
@@ -78,7 +78,7 @@ class TestFilms:
         assert resp.json['title'] == 'Update Title'
 
     def test_update_film_with_mock_db(self):
-        with patch('src.services.film_service.FilmService.fetch_film_by_uuid') as mocked_query, \
+        with patch('src.services.film_services.FilmService.fetch_film_by_uuid') as mocked_query, \
                 patch('src.db.session.add', autospec=True) as mock_session_add, \
                 patch('src.db.session.commit', autospec=True) as mock_session_commit:
             mocked_query.return_value = FakeFilm()
