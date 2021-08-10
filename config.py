@@ -11,3 +11,4 @@ class Config:
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     SECRET_KEY = 'you-will-never-know'
     # SQLALCHEMY_ECHO = True
+    HEROKU_DATABASE_URI = ''

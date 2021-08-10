@@ -12,6 +12,8 @@ flask-swagger-ui = "*"
 marshmallow-sqlalchemy = "*"
 pyjwt = "*"
 flask = "==1.1.4"
+sanic = "*"
+aiopg = "*"
 
 [dev-packages]
 pytest = "*"
