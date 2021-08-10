@@ -17,7 +17,3 @@ This is an application created with the aim of complementing the original web re
 * alembic — декоратор для валидации аргументов и возвращаемых значений у функций
 * docker  
 * travis  
-
-#### Build image: (Проект еще в разработке)
-
-
