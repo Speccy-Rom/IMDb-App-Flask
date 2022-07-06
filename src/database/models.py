@@ -33,10 +33,7 @@ class Film(db.Model):
         self.distributed_by = distributed_by
         self.length = length
         self.rating = rating
-        if not actors:
-            self.actors = []
-        else:
-            self.actors = actors
+        self.actors = actors or []
 
     def __repr__(self):
         return f'Film({self.title}, {self.release_date}, {self.uuid}, {self.distributed_by}, {self.rating}, {self.actors}, {self.rating}, {self.actors})'
